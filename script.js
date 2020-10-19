@@ -50,28 +50,36 @@ var questionsArr = [
   },
 ];
 
+//declaring variables and statements
 var questions = document.getElementById("questions");
 var answersDiv = document.getElementById("quiz");
 var questionCounter = 0
 
 function displayQuestion() {
     //Clearing previous questions
-    removeChild();
+    //removeChild(); //Does not work
 
-    questions.textContent = questionsArr[questionCounter].question; 
+    questions.textContent = questionsArr
+    //starts at first question in array from questionsArr. questionCounter = 0
+    [questionCounter].question; 
     
+
+    //creating h3 element tags for the answers.
     var answer1 = document.createElement("h3");
     var answer2 = document.createElement("h3");
     var answer3 = document.createElement("h3");
 
+                          //starting the answers at the first set in order.
     answer1.textContent = questionsArr[questionCounter].answers.a;
     answer2.textContent = questionsArr[questionCounter].answers.b;
     answer3.textContent = questionsArr[questionCounter].answers.c;
 
+    //giving attributes to answers -- democlass is definied in style.css
     answer1.setAttribute("class", "democlass"); 
     answer2.setAttribute("class", "democlass");
     answer3.setAttribute("class", "democlass");
 
+    //adding an event to answer 1-3 once clicked and moving to the next set of answers 1-3.
     answer1.addEventListener("click", function(){
       questionCounter++;
       displayQuestion();
@@ -90,4 +98,3 @@ function displayQuestion() {
     answersDiv.appendChild(answer3);
 }
 
-document.getElementById("myBtn").addEventListener("click", displayDate);
